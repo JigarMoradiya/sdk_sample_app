@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.sdk_jigar_demo.data.SdkTypes" />
+            type="com.sdk_jigar_demo.jigar_sdk_sample.data.SdkTypes" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

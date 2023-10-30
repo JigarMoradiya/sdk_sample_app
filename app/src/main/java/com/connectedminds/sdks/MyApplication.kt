@@ -5,7 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import com.sdk_jigar_demo.ConnectedMindSDK
+import com.sdk_jigar_demo.jigar_sdk_sample.ConnectedMindSDK
 import dagger.hilt.android.HiltAndroidApp
 
 

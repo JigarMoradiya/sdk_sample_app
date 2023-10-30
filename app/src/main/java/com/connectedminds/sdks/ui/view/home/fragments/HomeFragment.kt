@@ -10,8 +10,8 @@ import com.connectedminds.sdks.R
 import com.connectedminds.sdks.databinding.FragmentHomeBinding
 import com.connectedminds.sdks.ui.view.base.BaseFragment
 import com.connectedminds.sdks.ui.view.home.adapters.SdkTypesRecycleAdapter
-import com.sdk_jigar_demo.data.SdkChild
-import com.sdk_jigar_demo.data.SdkTypes
+import com.sdk_jigar_demo.jigar_sdk_sample.data.SdkChild
+import com.sdk_jigar_demo.jigar_sdk_sample.data.SdkTypes
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

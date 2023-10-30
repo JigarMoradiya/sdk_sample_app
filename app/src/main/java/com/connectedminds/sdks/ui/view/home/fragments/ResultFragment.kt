@@ -12,14 +12,14 @@ import com.connectedminds.sdks.utils.extensions.hide
 import com.connectedminds.sdks.utils.extensions.show
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.sdk_jigar_demo.data.Article
-import com.sdk_jigar_demo.data.HealingClip
-import com.sdk_jigar_demo.data.Podcast
-import com.sdk_jigar_demo.network.ApiResponsesListener
-import com.sdk_jigar_demo.network.CallApi
-import com.sdk_jigar_demo.ui.interfaces.ArticleClickListener
-import com.sdk_jigar_demo.ui.interfaces.ClipClickListener
-import com.sdk_jigar_demo.ui.interfaces.PodcastClickListener
+import com.sdk_jigar_demo.jigar_sdk_sample.data.Article
+import com.sdk_jigar_demo.jigar_sdk_sample.data.HealingClip
+import com.sdk_jigar_demo.jigar_sdk_sample.data.Podcast
+import com.sdk_jigar_demo.jigar_sdk_sample.network.ApiResponsesListener
+import com.sdk_jigar_demo.jigar_sdk_sample.network.CallApi
+import com.sdk_jigar_demo.jigar_sdk_sample.ui.interfaces.ArticleClickListener
+import com.sdk_jigar_demo.jigar_sdk_sample.ui.interfaces.ClipClickListener
+import com.sdk_jigar_demo.jigar_sdk_sample.ui.interfaces.PodcastClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.HashMap
 

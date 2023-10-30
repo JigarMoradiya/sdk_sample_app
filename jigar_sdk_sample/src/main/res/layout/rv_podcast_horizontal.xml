@@ -6,8 +6,8 @@
     <data>
         <variable
             name="data"
-            type="com.sdk_jigar_demo.data.Podcast" />
-        <import type="com.sdk_jigar_demo.utils.CustomFunctions"/>
+            type="com.sdk_jigar_demo.jigar_sdk_sample.data.Podcast" />
+        <import type="com.sdk_jigar_demo.jigar_sdk_sample.utils.CustomFunctions"/>
         <import type="android.view.View"/>
     </data>
 

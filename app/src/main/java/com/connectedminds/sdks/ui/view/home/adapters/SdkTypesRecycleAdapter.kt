@@ -8,9 +8,9 @@ import com.connectedminds.sdks.databinding.RvSdkParentBinding
 import com.connectedminds.sdks.utils.extensions.hide
 import com.connectedminds.sdks.utils.extensions.onClick
 import com.connectedminds.sdks.utils.extensions.show
-import com.sdk_jigar_demo.data.SdkChild
-import com.sdk_jigar_demo.data.SdkTypes
-import com.sdk_jigar_demo.utils.extensions.layoutInflater
+import com.sdk_jigar_demo.jigar_sdk_sample.data.SdkChild
+import com.sdk_jigar_demo.jigar_sdk_sample.data.SdkTypes
+import com.sdk_jigar_demo.jigar_sdk_sample.utils.extensions.layoutInflater
 
 
 class SdkTypesRecycleAdapter(
