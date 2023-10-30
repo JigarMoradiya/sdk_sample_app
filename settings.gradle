@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+rootProject.name = "sdk_demo"
+include ':app'
+include ':jigar_sdk_sample'

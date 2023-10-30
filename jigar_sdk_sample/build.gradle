@@ -1,0 +1,149 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.sdk_jigar_demo'
+    compileSdkVersion 34
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 34
+
+        versionCode 1
+        versionName "1.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildTypes {
+            debug {
+                debuggable true
+                minifyEnabled false
+                shrinkResources false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+
+        flavorDimensions "version"
+        productFlavors {
+            dev {
+                buildConfigField("String", "BASE_URL", "\"https://api.connectedminds.ai/dev_sdk/\"")
+                buildConfigField("String", "CONSTANT_KEY", "\"TnUzSTdMelVHR1NqMkRhS1NSY01SRExwd1Y5VjZ3ZUU=\"")
+
+                buildConfigField("String", "CERTIFICATE_URL", "\"https://connectlab-certificate.s3.eu-west-2.amazonaws.com/certificate.crt\"")
+            }
+
+            restest {
+                buildConfigField("String", "BASE_URL", "\"https://api.connectedminds.ai/test_sdk/\"")
+                buildConfigField("String", "CONSTANT_KEY", "\"VkVZN3FSSFI3WGNtWVhmamFzQUJqaFhjd05pelJlZXI=\"")
+
+                buildConfigField("String", "CERTIFICATE_URL", "\"https://connectlab-certificate.s3.eu-west-2.amazonaws.com/certificate.crt\"")
+            }
+
+            prod {
+                buildConfigField("String", "BASE_URL", "\"https://api.connectedminds.ai/prod_sdk/\"")
+                    buildConfigField("String", "CONSTANT_KEY", "\"VFM5SlhyOGVSRk1EQVdrVVdXRGVYSHdGQ2xkdlVXOVA=\"")
+
+                buildConfigField("String", "CERTIFICATE_URL", "\"https://connectlab-certificate.s3.eu-west-2.amazonaws.com/certificate.crt\"")
+            }
+        }
+
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+}
+
+/**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN**/
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+
+def getVersionName = { ->
+    return "1.0.1" // Replace with version Name
+}
+
+def getArtificatId = { ->
+    return "jigar_sdk_sample" // Replace with library name ID
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId 'com.sdk_jigar_demo'
+            artifactId getArtificatId()
+            version getVersionName()
+            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            /** Configure path of your package repository on Github
+             *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+             */
+//            url = uri("https://maven.pkg.github.com/GITHUB_USERID/REPOSITORY")
+            url = uri("https://maven.pkg.github.com/JigarMoradiya/sdk_sample_app")
+
+            credentials {
+                /**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN**/
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.1', 'io.jsonwebtoken:jjwt-gson:0.11.1'
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+    //Get unicode of emojis
+    implementation 'org.apache.commons:commons-text:1.9'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+}
+
